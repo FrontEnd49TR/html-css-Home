@@ -1,0 +1,50 @@
+:root{
+    --cell-width: 5vw;
+    --cell-height: 5vw;
+}
+body,html{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.board{
+     border: solid 4px blue;
+}
+.board-row{
+    display: flex;
+}
+.cell-white{
+    width: var(--cell-width);
+    height: var(--cell-height);
+    background-color: white;
+    border: solid 1px black;
+}
+.cell-black{
+    width: var(--cell-width);
+    height: var(--cell-height);
+    background-color: black;
+    border: solid 1px black;
+}
+@media (min-width : 560px) {
+    .cell-white{
+        width: calc(var(--cell-width) - 1vw);
+        height: calc(var(--cell-height) - 1vw);
+    }
+    .cell-black{
+        width: calc(var(--cell-width) - 1vw);
+        height: calc(var(--cell-height) - 1vw);
+    }
+    .board{
+        border: solid 6px red;
+    }
+}
+@media (min-width :900px){
+    .cell-black{
+        width: calc(var(--cell-width) - 1vw);
+        height: calc(var(--cell-height) - 1vw);
+    }
+    .board{
+        border: solid 8px green;
+    }
+}
