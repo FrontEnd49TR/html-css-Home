@@ -9,8 +9,8 @@
 }
 :root{
     --thumbnails-img-width: 20vw;
-    --thumbnails-img-heigth: 15vw;
-    --thumbnails-title-heigth: calc(var(--thumbnails-img-heigth) * 0.33);
+    --thumbnails-img-height: 15vw;
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
 }
 body,html{
     height: 100%;
@@ -73,33 +73,43 @@ color: blue;
 }
 .thumbnails-item{  
     max-width: var(--thumbnails-img-width);
-    min-height: calc(var(--thumbnails-img-heigth) + var(--thumbnails-title-heigth));
+    min-height: calc(var(--thumbnails-img-height) + var(--thumbnails-title-height));
     margin-top: 2.5vh;
     border: solid 1px blue;
     border-radius: 25%;
     overflow : hidden;
+    
 }
-.thumbnails-item :hover {
-    transform:scale(1.4);
+
+.thumbnails-item:hover{
+    transform:scale(1.1);
+    
+}
+
+
+
 }
 .thumbnails-anchor{
     text-decoration: none;
-}
+}    
 .thumbnails-image{
+
     display: block;
     width: var(--thumbnails-img-width);
-    height: var(--thumbnails-img-heigth);
-    }
+    height: var(--thumbnails-img-height);
+    
+}
 .thumbnails-title{
     display: block;
     text-align: center;
-    height: var(--thumbnails-title-heigth);
+    height: var(--thumbnails-title-height);
     background-color:lightsalmon;
 }
 
 @media (min-width: 560px) {
     .details-container{
         margin-top: 10vh;
+        
     }
     .thumbnails-list{
         flex-direction: column;
@@ -121,22 +131,34 @@ color: blue;
         height: 30vw;
         margin: auto;
     }
+    .thumbnails-item{
+        --thumbnails-img-width: 15vw;
+        --thumbnails-img-height: 10vw;
+        --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
+       
+    }
+   
 }
 @media (min-width: 900px) {
     .details-title{
-        font-size: x-large;
+        font-size: large;
         font-family: airstream;
         color: cadetblue;
     }
     .thumbnails-title{
-        font-size: xx-large;
+        font-size: large;
     }
     .details-image{
-        width: 70vh;
-        height: 60vh;
+      margin: auto;
+        width: 100vh;
+        height: 80vh;
+        
     }
-    .thumbnails-list{
-       height: 100vw;
-        height: 50vw;
+    .thumbnails-item{
+        --thumbnails-img-width: 10vw;
+        --thumbnails-img-height: 7vw;
+        --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
+       
     }
+    
 }
