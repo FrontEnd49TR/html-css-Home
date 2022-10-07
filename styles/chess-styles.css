@@ -3,17 +3,44 @@
     --cell-height: 5vw;
 }
 body,html{
-    height: 100%;
+    height: 100%;  /* push to full height*/
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center; /* center for x */
+    justify-content: center; /* center x  for column*/
+    margin: 0; /* without scroll */
 }
-.board{
+.board{ /* this board is row -> then direction column*/
+    display: flex;
+    flex-direction: column;
      border: solid 4px blue;
 }
-.board-row{
+.board-row{ /* for cell this row*/
     display: flex;
+    flex-direction: row;
 }
+/*  change in html in class cell-white( cell cell-white)
+    change in html cell cell-black
+
+.ceel{
+    width: var(--cell-width);
+    height: var(--cell-height);
+    border: solid 1px black;
+}
+    .cell.cell-white{
+    
+    background-color: white;
+   
+}
+.cell.cell-black{
+    
+    background-color: black;
+   
+
+}
+
+*/
+
 .cell-white{
     width: var(--cell-width);
     height: var(--cell-height);
@@ -27,7 +54,14 @@ body,html{
     border: solid 1px black;
 }
 @media (min-width : 560px) {
-    .cell-white{
+
+    :root {
+        --cell-width: 4vw;
+        --cell-height: 4vw;
+    }
+  /*  could be so */
+
+  /*.cell-white{
         width: calc(var(--cell-width) - 1vw);
         height: calc(var(--cell-height) - 1vw);
     }
@@ -37,14 +71,20 @@ body,html{
     }
     .board{
         border: solid 6px red;
-    }
+    } */
 }
 @media (min-width :900px){
-    .cell-black{
+
+    :root {
+        --cell-width: 3vw;
+        --cell-height: 3vw;
+    }
+
+   /* .cell-black{
         width: calc(var(--cell-width) - 1vw);
         height: calc(var(--cell-height) - 1vw);
     }
     .board{
         border: solid 8px green;
-    }
+    }*/
 }
