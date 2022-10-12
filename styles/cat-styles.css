@@ -41,8 +41,6 @@ color: blue;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10vh;
-   
-    
 }
 .div-class{
     position: relative;
@@ -52,7 +50,6 @@ color: blue;
     height: 55vw;
     border-radius: 25%;
 }
-
 .details-title{
     display: block; 
     text-align: center;
@@ -78,26 +75,17 @@ color: blue;
     border: solid 1px blue;
     border-radius: 25%;
     overflow : hidden;
-    
 }
-
 .thumbnails-item:hover{
-    transform:scale(1.1);
-    
-}
-
-
-
+    transform:scale(1.1); /*transform images small*/
 }
 .thumbnails-anchor{
     text-decoration: none;
 }    
 .thumbnails-image{
-
     display: block;
     width: var(--thumbnails-img-width);
     height: var(--thumbnails-img-height);
-    
 }
 .thumbnails-title{
     display: block;
@@ -105,11 +93,9 @@ color: blue;
     height: var(--thumbnails-title-height);
     background-color:lightsalmon;
 }
-
 @media (min-width: 560px) {
     .details-container{
         margin-top: 10vh;
-        
     }
     .thumbnails-list{
         flex-direction: column;
@@ -135,9 +121,7 @@ color: blue;
         --thumbnails-img-width: 15vw;
         --thumbnails-img-height: 10vw;
         --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
-       
     }
-   
 }
 @media (min-width: 900px) {
     .details-title{
@@ -149,16 +133,12 @@ color: blue;
         font-size: large;
     }
     .details-image{
-      margin: auto;
-        width: 100vh;
-        height: 80vh;
-        
+        width: 90vh;
+        height: 70vh;
     }
-    .thumbnails-item{
+    .thumbnails-item{  /* to do the images a more little */
         --thumbnails-img-width: 10vw;
         --thumbnails-img-height: 7vw;
         --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
-       
     }
-    
 }
