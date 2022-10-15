@@ -7,13 +7,13 @@
     src: url(fonts/Airstream-webfont.svg);
     src: url(fonts/Airstream-webfont.woff);
 }
-:root{
+:root{  /* creating variables */
     --thumbnails-img-width: 20vw;
     --thumbnails-img-height: 15vw;
     --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
 }
 body,html{
-    height: 100%;
+    height: 100%; /* uses the ALL HEIGHT of the page */
 }
 body{
     display: flex;
@@ -27,60 +27,61 @@ background-color:lightsalmon;
 display: block;
 text-align: center;
 font-family: lakeshore;
-/*text-transform: uppercase;*/
+/*text-transform: uppercase;*/ /* ----->  transition from SMALL letters to uppercase (BIG) */
 color: blue;
 }
 .main-class{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
+    flex-direction: column;  /* blocks direction */
+    justify-content: center;  /* align image vertically centered  */
+    flex-grow: 1;  /* occupies one part of the screen  */
+    /* in this case aligns everything about the vertical to the center of the screen */
 }
 .details-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;  /* align the image to the center horizontally */
     margin-bottom: 10vh;
 }
 .div-class{
-    position: relative;
+    position: relative;  /* used to write text on a picture whith in position: absolute */
 }
 .details-image{
     width: 70vw;
     height: 55vw;
-    border-radius: 25%;
+    border-radius: 25%;  /* corner rounding */
 }
 .details-title{
     display: block; 
     text-align: center;
-    position: absolute;
-    left: 1vw;
+    position: absolute;  /* is used for to write text on a picture whith in position: relative */
+    left: 1vw;             /* specifying a position relative to a class or divs  */ 
     right: 1vw;
     bottom: 3vw;
 }
 .thumbnails-list{
-    list-style: none;
+    list-style: none; /* deletes the DOT from the anchor */
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    max-height: 25vh;
-    overflow-y: auto;
-    justify-content: space-around;
+    flex-wrap: wrap; /* jump to the next line if it reached the end of the line */ 
+    max-height: 25vh; /* SCROLL window size */
+    overflow-y: auto;  /* allows SCROLLING */
+    justify-content: space-around; /* recedes DISTANCE from each content on ALL SIDES */
     padding-left: 0;
 }
 .thumbnails-item{  
     max-width: var(--thumbnails-img-width);
     min-height: calc(var(--thumbnails-img-height) + var(--thumbnails-title-height));
     margin-top: 2.5vh;
-    border: solid 1px blue;
-    border-radius: 25%;
-    overflow : hidden;
+    border: solid 1px blue;  /* creating a border line for a picture */
+    border-radius: 25%;  /* corner rounding */
+    overflow : hidden; /* hides unwanted part */ 
 }
 .thumbnails-item:hover{
-    transform:scale(1.1); /*transform images small*/
+    transform:scale(1.1); /* transforms a SMALL image into a LARGE one */
 }
 .thumbnails-anchor{
-    text-decoration: none;
+    text-decoration: none; /* deletes the UNDERLINING in text due to ANCHOR */
 }    
 .thumbnails-image{
     display: block;
@@ -102,7 +103,7 @@ color: blue;
         flex-wrap: nowrap;
         max-width: 80vh;
         max-height: 80vh;
-        order: -1;
+        order: -1; /* CHANGES the POSITION of the SIDES of the content in the landscape */
         justify-content: flex-start;
         padding-right: 5vh;
         padding-left: 5vh;
@@ -110,7 +111,7 @@ color: blue;
     }
     .main-class{
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-around; /* recedes DISTANCE from each content on ALL SIDES */
     }
     .details-image{
         width: 40vw;
@@ -123,7 +124,7 @@ color: blue;
         --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
     }
 }
-@media (min-width: 900px) {
+@media (min-width: 900px) {  
     .details-title{
         font-size: large;
         font-family: airstream;
@@ -136,7 +137,7 @@ color: blue;
         width: 90vh;
         height: 70vh;
     }
-    .thumbnails-item{  /* to do the images a more little */
+    .thumbnails-item{  /* makes pictures smaller */
         --thumbnails-img-width: 10vw;
         --thumbnails-img-height: 7vw;
         --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
