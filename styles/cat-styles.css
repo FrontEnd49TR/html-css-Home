@@ -37,14 +37,34 @@ color: blue;
     flex-grow: 1;  /* occupies one part of the screen  */
     /* in this case aligns everything about the vertical to the center of the screen */
 }
+.main-class.hidden{
+    --thumbnails-img-width: 35vw;
+    --thumbnails-img-height: 25vw;
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
+}
 .details-container{
     display: flex;
     flex-direction: column;
     align-items: center;  /* align the image to the center horizontally */
     margin-bottom: 10vh;
 }
+.hidden .details-container{  /* all actions belong to one class, hides the container */
+    display: none;
+}
 .div-class{
     position: relative;  /* used to write text on a picture whith in position: absolute */
+}
+.hide-button{  /* button hidden slide . location */
+   display: block;
+   background-color:cornsilk;
+   border-radius: 25%;
+   margin-bottom: 1vh;
+ /* position: absolute;
+    top: 3vh;
+    right: 3vw; */
+}
+.hidden .hide-button{  /* remove the button from the screen */
+    display: none;
 }
 .details-image{
     width: 70vw;
@@ -68,6 +88,10 @@ color: blue;
     overflow-y: auto;  /* allows SCROLLING */
     justify-content: space-around; /* recedes DISTANCE from each content on ALL SIDES */
     padding-left: 0;
+}
+.hidden .thumbnails-list{ /* the maximum height of the scroll window when the large image is hidden*/
+    max-height: 80vh;
+    /* margin-bottom: 10vh; */
 }
 .thumbnails-item{  
     max-width: var(--thumbnails-img-width);
@@ -100,7 +124,7 @@ color: blue;
     }
     .thumbnails-list{
         flex-direction: column;
-        flex-wrap: nowrap;
+        flex-wrap: nowrap;  /* pictures in a row */
         max-width: 80vh;
         max-height: 80vh;
         order: -1; /* CHANGES the POSITION of the SIDES of the content in the landscape */
@@ -121,9 +145,23 @@ color: blue;
     .thumbnails-item{
         --thumbnails-img-width: 15vw;
         --thumbnails-img-height: 10vw;
-        --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
+        --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33); 
     }
-}
+    .hidden .thumbnails-list{
+        flex-direction: row; /* arrangement of icons in a row */
+        flex-wrap: wrap;  /* jump to another line at the end of the screen */
+        justify-content: space-around ;  /* space on all sides of the pictures */
+        max-height: 80vh;
+        max-width: 170vh;
+    }
+    .hidden .thumbnails-item{
+        --thumbnails-img-width: 25vw;
+        --thumbnails-img-height: 18vw;
+        /* --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);  */
+    }
+    .hidden .thumbnails-title{
+       padding-top: 5vh;   /* the signature of the pictures is shifted down, in the center of the window */
+    }
 @media (min-width: 900px) {  
     .details-title{
         font-size: large;
@@ -135,11 +173,19 @@ color: blue;
     }
     .details-image{
         width: 90vh;
-        height: 70vh;
+        height: 65vh;
     }
     .thumbnails-item{  /* makes pictures smaller */
         --thumbnails-img-width: 10vw;
         --thumbnails-img-height: 7vw;
+        --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33); /* affects the size of the image title window */
+    }
+    .hidden .thumbnails-item{   /* size in hidden mode */
+        --thumbnails-img-width: 17vw;
+        --thumbnails-img-height: 11vw;
         --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
+    }
+    .hidden .thumbnails-list{   /* set scroll size */
+        max-height: 70vh;
     }
 }

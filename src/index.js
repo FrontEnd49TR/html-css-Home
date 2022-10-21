@@ -7,6 +7,10 @@ const detailsImage = document.querySelector(".details-image");
 
 /* search for an title belonging to a specific anchor */
 const detailsTitle = document.querySelector(".details-title");
+/* access to .main-class */
+const mainClass = document.querySelector(".main-class");
+/* variable for hidden class  */
+const HIDDEN = "hidden";
 
 /* the function of writing to a certain (needed) anchor the corresponding image and title */
 function setDetails(anchor) {
@@ -19,6 +23,13 @@ for(let i = 0; i < anchors.length; i++) {
     /* addEventListener - executes an unnamed function() when pressed click left mouse*/
     anchors[i].addEventListener("click", function() {
         console.log("event - click on", anchors[i]);  /* debuger */
+        showDetails(); /*function call */
         setDetails(anchors[i]); /* a function is executed for a specific anchor */
     }) 
+}
+function showDetails() {
+    mainClass.classList.remove(HIDDEN); /* remove the hidden class in the main class*/
+}
+function hideDetails() {
+    mainClass.classList.add(HIDDEN); /* add class hidden in main class */
 }
