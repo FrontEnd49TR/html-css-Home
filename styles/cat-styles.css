@@ -163,7 +163,7 @@ color: blue;
        padding-top: 5vh;   /* the signature of the pictures is shifted down, in the center of the window */
     }
 @media (min-width: 900px) {  
-    .details-title{
+    .details-title{  /* text on picture */
         font-size: xx-large;
         /* font-family: airstream; */
         color: brown;
