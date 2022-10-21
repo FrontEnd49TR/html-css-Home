@@ -164,9 +164,10 @@ color: blue;
     }
 @media (min-width: 900px) {  
     .details-title{
-        font-size: large;
-        font-family: airstream;
-        color: cadetblue;
+        font-size: xx-large;
+        /* font-family: airstream; */
+        color: brown;
+        bottom: 1vw;
     }
     .thumbnails-title{
         font-size: large;
