@@ -84,7 +84,14 @@ color: blue;
 
 }
 .thumbnails-audio{
+
+}
+.play{
     
+
+}
+.pause{
+
 }
 .thumbnails-list{
     list-style: none; /* deletes the DOT from the anchor */

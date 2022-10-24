@@ -22,6 +22,8 @@ const IS_POINT="is-point";
 /* variable for .hidden class  */
 const HIDDEN = "hidden";
 
+
+
 /* the function of writing to a certain (needed) anchor the corresponding image and title */
 function setDetails(anchor) {
     detailsImage.setAttribute('src', anchor.getAttribute('data-details-image'));
@@ -45,6 +47,7 @@ function showDetails() {
     setTimeout(function() {
         detailsContainer.classList.remove(IS_POINT); /* remove the .is-point in the .details-container (image bigger) */ 
     }, 1) /* delay before start in millisecond */ 
+    
 }
 function hideDetails() {
     mainClass.classList.add(HIDDEN); /* add class hidden in main class */
