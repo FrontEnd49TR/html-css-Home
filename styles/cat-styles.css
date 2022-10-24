@@ -47,6 +47,7 @@ color: blue;
     flex-direction: column;
     align-items: center;  /* align the image to the center horizontally */
     margin-bottom: 10vh;
+    transition: 5s cubic-bezier(0.1, 1.3, 0.9, 1); /*only 5s resizes */
 }
 .hidden .details-container{  /* all actions belong to one class, hides the container */
     display: none;
@@ -78,6 +79,12 @@ color: blue;
     left: 1vw;             /* specifying a position relative to a class or divs  */ 
     right: 1vw;
     bottom: 3vw;
+}
+.details-audio{
+
+}
+.thumbnails-audio{
+    
 }
 .thumbnails-list{
     list-style: none; /* deletes the DOT from the anchor */
@@ -118,6 +125,10 @@ color: blue;
     height: var(--thumbnails-title-height);
     background-color:lightsalmon;
 }
+.is-point{  /* we have created a class and only use it here. so it is possible */
+    transform: scale(0.001); /* reduces the main image to dot size */
+    transition: 0s; /* instantly / now / quickly */
+}
 @media (min-width: 560px) {
     .details-container{
         margin-top: 10vh;
@@ -138,9 +149,9 @@ color: blue;
         justify-content: space-around; /* recedes DISTANCE from each content on ALL SIDES */
     }
     .details-image{
-        width: 40vw;
-        height: 30vw;
-        margin: auto;
+        width: 30vw;
+        height: 25vw;
+        margin: 0;
     }
     .thumbnails-item{
         --thumbnails-img-width: 15vw;
