@@ -80,19 +80,7 @@ color: blue;
     right: 1vw;
     bottom: 3vw;
 }
-.details-audio{
 
-}
-.thumbnails-audio{
-
-}
-.play{
-    
-
-}
-.pause{
-
-}
 .thumbnails-list{
     list-style: none; /* deletes the DOT from the anchor */
     display: flex;
