@@ -13,41 +13,69 @@
 
 // Convertation Number to String and back // Eugene Kuzenko
 
-let number = 46016237;   // data input
-let baseNum = 36;         // data input
-
-let string = "10110011011011";   // data input
-let baseStr = 2;                 // data input
-
-if (isNaN(number) || isNaN(baseStr) || isNaN(baseNum)){  // checking for valid input
-        console.log("\n Enter correct numbers, please. \n");
+  
+function fromNumberToString(number, base) {
+    let numb = 0;
+    let rest = 0;
+    if(isNaN(base) || isNaN(number)) {
+        console.log("\n".base, ": wrong number. Enter correct numbers, please. \n");
         return 0;
     }
-    number = Math.abs(number);  // the absolute value of a number
-    baseNum = Math.abs(baseNum);
-    baseStr = Math.abs(baseStr);
-function fromNumberToString(number, baseNum) {
+    number = Math.abs(number);
+    base = Math.abs(base);
+    let power = number.length-1;
+
     let str = "";
+    let x=0;
+   
      do{
-       let rest = (number % baseNum).toString(baseNum);  // the numerical remainder of the division is translated into a hexal string
-       str = rest + str;  // reverse string concatenation
-       number = Math.trunc(number / baseNum);  // allocate an integer without a remainder from division
+        let rest = (number % base);
+
+        if(base > 10) {
+             
+          str = String.fromCharCode(rest + 87) + str; 
+            number = Math.trunc(number / base); 
+        }
+        else{
+            //rest = +string;
+            let rest = (number % base);
+            str = str + rest;
+            number = Math.trunc(number / base); 
+
+        }
+       
      }while (number != 0);
     return str;
 }
-// INSTEAD OF FUNCTION  fromStringToNumber(string,baseStr), I CAN WRITE :
 
-// let numb = parseInt(string,baseStr);
-// console.log("string : ",string, '//', "number : ",numb);
-
-function fromStringToNumber(string, baseStr) {
-    let numb = "";
-    for (let i = 0; i < string.length ; i++)  // pass along the line
-    {
-        let rest = parseInt(string[i],baseStr);  // converting each character to a number
-        numb = numb*baseStr + rest;  // get a numeric value
+function fromStringToNumber(string, base) {
+    let numb = 0;
+    let rest = 0; 
+    let power = string.length-1;
+         if(isNaN(base)) {
+            console.log("\n".base, ": wrong number. Enter correct numbers, please. \n");
+            return 0;
+        }
+     base = Math.abs(base);   
+     for (let i = 0; i < string.length ; i++)  // pass along the line
+    { 
+        if(isNaN(string)) {
+            rest = string[i].charCodeAt()-87;
+            numb = numb*base + rest;  // get a numeric value
+        }
+        else {
+            rest = +string;
+            numb = numb +  string[i] * Math.pow(base,power);
+            power = power-1;
+        }
     }
-    return numb;
+     return numb;
 }
-console.log("\n Entered number : ",number," in ",baseNum," number system is : ",'"',fromNumberToString(number, baseNum),'"\n');
-console.log("\n Entered string : ",'"',string,'"', " in ",baseStr, " number system is :  ",fromStringToNumber(string, baseStr),"\n");
+console.log(" \n RESULT  function fromNumberToString: \n");
+console.log( fromNumberToString(900550, 36));
+console.log( fromNumberToString(46016237, 36));
+console.log( fromNumberToString(11483,2));
+console.log(" \nRESULT function fromStringToNumber : \n");
+console.log(fromStringToNumber('java',36));
+console.log(fromStringToNumber('react',36));
+console.log(fromStringToNumber('10110011011011',2));
