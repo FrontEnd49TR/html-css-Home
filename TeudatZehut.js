@@ -17,6 +17,9 @@
 */
 
 
+console.log(" \nGenerated Teudat Zehut =>  ", checkTeudatZehut(generateRandomTeudatZehut()));
+console.log(" \nGenerated Teudat Zehut =>  ", checkTeudatZehut(generateRandomTeudatZehut()));
+console.log(" \nGenerated Teudat Zehut =>  ", checkTeudatZehut(generateRandomTeudatZehut()));
 
 console.log(checkTeudatZehut('123456782'));
 console.log(checkTeudatZehut('346784324'));
@@ -24,6 +27,24 @@ console.log(checkTeudatZehut('12345a'));
 console.log(checkTeudatZehut('123456789233'));
 console.log(checkTeudatZehut('1234'));
 
+function generateRandomTeudatZehut(){
+    let RandArr = [];
+    let NewTZ = [];
+    let StrNewTZ = "";
+    for (let i = 0; i < 8; i++) {
+        RandArr[i] = Math.round(Math.random() * 9);
+        NewTZ[i] = RandArr[i];
+    }
+    RandArr =  ConvertEvenOdd(RandArr);
+    RandArr = sumElemBigNnum(RandArr);
+    RandArr = sumDigits(RandArr);
+    let checkDigit = 10 - RandArr % 10;
+    NewTZ[8] = checkDigit;
+    for (let i=0; i<NewTZ.length;i++){
+        StrNewTZ += NewTZ[i];
+    }
+    return StrNewTZ;
+}
 
 function checkTeudatZehut(teudatStrNumber) {
     let Check = ChekInput(teudatStrNumber);
@@ -87,3 +108,4 @@ function ChekInput(teudatStrNumber) {
     }
     return teudatStrNumber;
 }
+
