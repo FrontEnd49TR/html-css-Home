@@ -16,7 +16,7 @@
         because 1 + 4(2 * 2) + 3 + 8(4 * 2) + 5 + 3 (6 * 2 = 12=> 1+ 2=3) + 7 + 7(8 * 2 = 16 => 1 + 6 =7) + 2 = 4
 */
 
-
+/*
 console.log(" \nGenerated Teudat Zehut =>  ", checkTeudatZehut(generateRandomTeudatZehut()));
 console.log(checkTeudatZehut('123456782'));
 console.log(checkTeudatZehut('346784324'));
@@ -92,4 +92,67 @@ function chekInput(teudatStrNumber) {
     return teudatStrNumber;
    //return true;
 }
+*/
+
+// CW - TZ
+   function checkTeudatZehut(teudatStrNumber) {
+// let res = false
+// if (teudatStrNumber.length == 9 && !isNaN(teudatStrNumber)) {
+//     let arrayForSum = getArrayForSum(teudatStrNumber);
+//     let sum = getSum(arrayForSum);
+//     res = sum % 10 == 0;
+// }
+// return res;
+// }
+
+function checkTeudatZehut(teudatStrNumber) {
+let arrayForSum = getArrayForSum(teudatStrNumber);
+let sum = getSum(arrayForSum);
+return sum % 10 == 0;
+}
+function getArrayForSum(teudatStrNumber) {
+    let array = Array.from(teudatStrNumber);
+
+    // let res = [];
+    // for(let i = 0; i < array.length; i++){
+    //     res[i] = getCurrentNumber(array[i], i); // i - index
+    // }
+    // return res;
+    return array.map(getCurrentNumber);
+}
+function getCurrentNumber(element, index) {
+    return index % 2 == 0 ? +element : getNumberOddIndex(element);
+
+}
+function getNumberOddIndex(element) {
+    let res = element * 2;
+    if (res > 9) { res -= 9;}
+    return res;
+}
+function getSum(array) {
+    // let res = 0;
+    // for (let i = 0; i < array.length; i++) {
+    //     res += array[i];
+    // }
+   // return res;
+        return array.reduce(function(res, cur) {
+            return res + cur;
+   }, 0);
+
+// let res = array[0]; //whith out res = 0;  *********
+    // for (let i = 1 /*  i = 0 ***** */; i < array.length; i++) {
+    //     res += array[i];
+    // }
+   // return res;
+   //return array.reduce(function(res, cur) {
+    //return res + cur;
+//},); whith out 0,  *************
+
+}
+//console.log(checkTeudatZehut`123456782`);
+
+ let number = [`123456782`, `1234`, `abcd123`, `12345789`];
+ number.forEach(function(e) {
+    console.log(`teudat zehut: ${e}, return of the method checkTeudatZehut : ${checkTeudatZehut(e)}`)
+ });
 
