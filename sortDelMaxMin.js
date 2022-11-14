@@ -10,9 +10,13 @@
 
 let arr = [5, 2, 4, 3, 7];
 function minMax(numbers) {
-    let min = numbers.reduce((min,element) => min <= element ? min: element, ...[]);
-    let max = numbers.reduce((max,element) => max >= element ? max: element, ...[]);
-return [min,max];
+//     let min = numbers.reduce((min,element) => min <= element ? min: element, ...[]);
+//     let max = numbers.reduce((max,element) => max >= element ? max: element, ...[]);
+// return [min,max];
+ return numbers.reduce((arMinMax,elem) => {
+  arMinMax > elem ? arMinMax[0] = elem : arMinMax[1] = elem 
+},[numbers[0],numbers[0]]);
+
 }
 console.log(`\nInput array : ${arr} // Output array : ${minMax(arr)}\n`) ;
 
@@ -25,10 +29,11 @@ console.log(`\nInput array : ${arr} // Output array : ${minMax(arr)}\n`) ;
 
 let str = ["abc", "old_abc", "lmn", "123", "old_lmn", "old_"];
 let prefix = 'old_';
+
 function deleteWithPrefix(strings, prefix) {
-  return strings.filter((elem, i) => strings.includes(prefix) ? strings.splice(i,1) : elem);
+ return strings.filter((elem) => prefix > elem);
 }
-console.log(deleteWithPrefix(str,prefix));
+console.log(`\n Array without prefix : [${deleteWithPrefix(str,prefix)}]`);
 
 
 
