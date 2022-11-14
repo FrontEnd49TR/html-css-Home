@@ -1,0 +1,41 @@
+<!--  // Eugene Kuzenko
+
+1.	Add functionality
+1.1.	Introduce HTML element with number of the remaining guess trials 
+1.1.1.	Initial number is 6
+1.1.2.	Each guess trial decrements number of the remaining trials
+1.2.	In the case a gamer guesses a word for 6 or less trials the green colored message appears like - Congratulations - you have guessed word
+1.3.	In the case a gamer doesn’t guess a word for 6 trials the red colored message appear like – Sorry – your guess trials have ended up
+2.	Bug in existing code
+2.1.	There is a bug for words containing repeated letters like “pappy” 
+2.2.	Try to find and at least explain the bug’s root cause
+2.3.	Try to figure out a solution for the bug fixing   
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/wordle.css">
+    <link rel="shortcut icon" href="images/icon_wordle.png">
+    <title>WORD le Eugene Kuzenko</title>
+</head>
+<body >
+  
+    <input class="class-input" type="text" placeholder = "Enter a 5 letter word" onchange="onChange(event)">
+    <label class="notification-class"></label>
+    
+    <section class="word-guess">
+        <div class="letter-guess"></div>
+        <div class="letter-guess"></div>
+        <div class="letter-guess"></div>
+        <div class="letter-guess"></div>
+        <div class="letter-guess"></div>
+    </section>
+    <label class="final-class-winner"></label>
+
+    <script src="src/wordle.js"></script>
+    
+</body>
+</html>
