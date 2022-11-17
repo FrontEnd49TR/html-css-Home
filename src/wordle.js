@@ -1,4 +1,4 @@
-const word = "table";
+const word = "apple";
 N_LETTER = 5;
 let attempt = 6;
 const letterElements = document.querySelectorAll(".letter-guess");
@@ -23,7 +23,7 @@ function onChange(event) {
             let index = word.indexOf(l);  // indexOf - if there is letter - return index letter in array - else return -1
             let res = `red`;
             if (index > -1) {
-                res = index == i ? 'green' : 'yellow';
+                res = l == word[i] ? 'green' : 'yellow';
             }
            return res;
         })
