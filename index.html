@@ -1,15 +1,20 @@
 <!--  // Eugene Kuzenko
 
-1.	Add functionality
-1.1.	Introduce HTML element with number of the remaining guess trials 
-1.1.1.	Initial number is 6
-1.1.2.	Each guess trial decrements number of the remaining trials
-1.2.	In the case a gamer guesses a word for 6 or less trials the green colored message appears like - Congratulations - you have guessed word
-1.3.	In the case a gamer doesn’t guess a word for 6 trials the red colored message appear like – Sorry – your guess trials have ended up
-2.	Bug in existing code
-2.1.	There is a bug for words containing repeated letters like “pappy” 
-2.2.	Try to find and at least explain the bug’s root cause
-2.3.	Try to figure out a solution for the bug fixing   
+1.	Write application – game for guessing word similar to the television program “Marvels Field”
+1.1.	The application should present HTML element for inputting a word guess 
+1.2.	The application should present the elements as many as the number of letters of being guessed word. 
+1.2.1.	Each element should present an appropriate letter of being guessed word with the same background 
+        and font colors, so the letter won’t be seen
+1.3.	The application should present a question text related to being guessed word. For example, 
+        unseen letters of word: s t r i n g, question: JavaScript Data Type
+1.4.	The application should allow the user to type a word guess and hit “enter” key
+1.5.	The application should take the typed word, analyze it and update the background 
+        of the letters in the being guessed word for making them seen 
+1.6.	The application should allow the user to play again only after guessing the word
+1.6.1.	New game should present new word with a proper question
+1.6.1.1.	Random word from the existing ones occasionally may be the same as the previous one. 
+              The application should prevent it happening. However, it’s possible if word X follows word Y and
+                 after word X there will be again word Y. 
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,25 +22,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/wordle.css">
-    <link rel="shortcut icon" href="images/icon_wordle.png">
-    <title>WORD le Eugene Kuzenko</title>
+    <link rel="stylesheet" href="styles/marvelField.css">
+    <link rel="shortcut icon" href="images/marvelsFieldIcon.png">
+    <title>Marvels Field - Eugene Kuzenko</title>
 </head>
 <body >
-  
-    <input class="class-input" type="text" placeholder = "Enter a 5 letter word" onchange="onChange(event)">
+    <label class = "question"></label>
+    <input class="class-input" type="text" placeholder = "Enter a answer" onchange="onChange(event)">
     <label class="notification-class"></label>
     
     <section class="word-guess">
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
+       
     </section>
     <label class="final-class-winner"></label>
 
-    <script src="src/wordle.js"></script>
+    <script src="src/marvelField.js"></script>
     
 </body>
 </html>
