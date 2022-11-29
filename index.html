@@ -1,0 +1,50 @@
+<!--  Eugene Kuzenko
+    
+1.	Write HTML page presenting the following
+1.1.	Three buttons
+1.1.1.	Show All Movies – pressing this button triggers showing all movies with vertical scrolling 
+only movies data (buttons should remain on their places). Each movie is presented as shown on the below picture
+1.1.2.	Show Most Popular Movie – pressing this button triggers showing movie with maximal 
+value of the field “popularity”. No scrolling is allowed
+1.1.3.	Show Least Popular Movie – pressing this button triggers showing movie with minimal 
+value of the field “popularity”. No scrolling is allowed
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/movies.css">
+    <link rel="shortcut icon" href="images/movies_icon.png" type="image/x-icon">
+    <title>Movies Eugene Kuzenko</title>
+</head>
+
+<body>
+    <section class="button-class">
+        <button onclick="show(1)">Show All Movies</button>
+        <button onclick="show(2)">Show Most Popular Movie</button>
+        <button onclick="show(3)">Show Least Popular Movie</button>
+    </section>
+    <section hidden>
+        <ul class="movies-list"></ul>
+    </section>
+
+    <section hidden>
+        <ul class="movies-most-popular"></ul>
+    </section>
+
+    <section hidden>
+        <ul class="movies-least-popular"></ul>
+    </section>
+
+    <footer class="footer-class">
+        Author: Eugene Kuzenko
+    </footer>
+
+</body>
+<script src="src/movies.js"></script>
+
+</html>
