@@ -1,14 +1,17 @@
 <!--  Eugene Kuzenko
-    
-1.	Write HTML page presenting the following
-1.1.	Three buttons
-1.1.1.	Show All Movies – pressing this button triggers showing all movies with vertical scrolling 
-only movies data (buttons should remain on their places). Each movie is presented as shown on the below picture
-1.1.2.	Show Most Popular Movie – pressing this button triggers showing movie with maximal 
-value of the field “popularity”. No scrolling is allowed
-1.1.3.	Show Least Popular Movie – pressing this button triggers showing movie with minimal 
-value of the field “popularity”. No scrolling is allowed
- -->
+
+1.	We created index.hml containing the form element for inputting 
+    the data about an employee. It contains calls of two functions: onSubmit and onChange
+1.1.	Function onSubmit gets control once the user hits the button “Submit”. 
+        The function takes reference to an event object. It creates object from all input field values
+1.2.	Function onChange gets control once the user finishes typing input data. In the meantime,
+        only from the input field for a salary. The written code contains checking whether the inputted value is right.
+        If the value is wrong the code sets empty string, that is the field will be considered as empty
+        and submitting cannot be performed. You should update the code for: 
+1.2.1.	Showing message (no standard alert) telling about an error so that the user get known of a reason the field resetting
+1.2.2.	Adding processing the birth date inputting. The year cannot be less than 1950 and greater than the current year
+1.2.3.	In 5 seconds the message should disappear 
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,34 +20,47 @@ value of the field “popularity”. No scrolling is allowed
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/movies.css">
-    <link rel="shortcut icon" href="images/movies_icon.png" type="image/x-icon">
-    <title>Movies Eugene Kuzenko</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/forms_employee.jpeg">
+    <link rel="stylesheet" href="styles/forms.css">
+    <title>Employee DataBase</title>
 </head>
 
 <body>
-    <section class="button-class">
-        <button onclick="show(1)">Show All Movies</button>
-        <button onclick="show(2)">Show Most Popular Movie</button>
-        <button onclick="show(3)">Show Least Popular Movie</button>
-    </section>
-    <section hidden>
-        <ul class="movies-list"></ul>
-    </section>
+    <form id="employee-form" onsubmit="onSubmit(event)" class="form-class">
 
-    <section hidden>
-        <ul class="movies-most-popular"></ul>
-    </section>
+        <div class="two-inputs">
+            <input class="text" name="employee_name" placeholder="Enter employee name" required>
+            <input class="email" name="Email" placeholder="Enter email" required>
+        </div>
 
-    <section hidden>
-        <ul class="movies-least-popular"></ul>
-    </section>
+        <div class="date-label">
+            <label>Enter birthdate </label>
+            <input type="date" name="birthDate" placeholder="birthDate" onchange="onChangeBirthday(event)" required>
+        </div>
 
-    <footer class="footer-class">
-        Author: Eugene Kuzenko
-    </footer>
+        <div class="two-inputs">
+            <select name="department" required>
+                <option value hidden selected disabled>
+                    --Select Department--
+                </option>
+                <option value="QA">QA</option>
+                <option value="Development">Development</option>
+                <option value="Management">Management</option>
+                <option value="Audit">Audit</option>
+            </select>
 
+            <input type="number" name="salary" placeholder="Enter salary" onchange="onChangeSalary(event)" required>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+
+        <div class="alert-class"></div>
+
+    </form>
+    <script src="src/forms.js"></script>
 </body>
-<script src="src/movies.js"></script>
 
 </html>
