@@ -1,0 +1,33 @@
+/* .active {
+    background-color: red;
+    color: green;
+} */
+.header-button-class {
+    display: block;
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 5vh;
+    margin-top: 2vh;
+}
+.main-button-class {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10vh;
+    
+}
+
+.button-class+.button-class {
+
+   margin-left: 3vw;
+   
+    
+}
+.addBook-class {
+
+}
+.header-form-class {
+    display: block;
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 5vh;
+}
