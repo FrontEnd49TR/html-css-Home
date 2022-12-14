@@ -44,57 +44,58 @@
                 specified range of the pages  -->
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Library</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="styles/library.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+
+    <link rel="stylesheet" href="styles/library.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/library_icon.png">
 </head>
 
 <body>
-    <header class="header-button-class">Library</header>
-    <div class="main-button-class">
-
-        <button onclick="showSection(0)" class="button-class">Adding new book in library</button>
-        <button onclick="showSection(1)" class="button-class">Presenting all the books</button>
-        <button onclick="showSection(2)" class="button-class">Presenting the books written by a given author</button>
-        <button onclick="showSection(3)" class="button-class">Presenting the books having the number of the pages in a
-            given range</button>
+    <div class="buttons-menu">
+        <button onclick="showSection(0)" class="btn-menu">Adding new book in library</button>
+        <button onclick="showSection(1)" class="btn-menu">Presenting all the books</button>
+        <button onclick="showSection(2)" class="btn-menu">Presenting the books written by a given author</button>
+        <button onclick="showSection(3)" class="btn-menu">Presenting the books having the number of the pages in a given
+            range</button>
     </div>
-    <!-- ******************************  SECTION 0 *************************************** -->
-    <section class="addBook-class" hidden>
-        <header class="header-form-class">Fill out the form</header>
+    <!-- ****************   Section 0 ******************************************* -->
+    <section id="add-book"  hidden>  
+<!-- add-employee -->
+        <header class="form-title">
+            Libray Form
+        </header>
 
-        <form class="library-form-class" onsubmit="onSubmit(event)">
+        <form id="book_form" class="form-class">
+<!-- employee-form -->
             <div class="two-inputs">
-                <input class="input-class" type="text" name="titleBook" placeholder="Book title" required>
-                <input class="input-class" type="text" name="authorBook" placeholder="Author" required>
+                <!-- employee_name -->
+                <input type="text" name="book_title" required placeholder="Enter book title">
+                <!-- email -->
+                <input type="text" name="Author" placeholder="Enter Author" required>
             </div>
 
-
-            <div class="two-inputs">
-                <!-- <p id="date-error-id" class="error-class"></p> -->
-                <div class="date-label-class">
-                    <label>Enter the publication date of the book</label>
-
-                    <input type="date" name="publishDate" placeholder="Publishing date" onchange="onChange(event)"
-                        required>
-                </div>
+            <div class="date-label">
+                <label>Enter publishing date</label>
+                <!--     // name = birthDate  -->
+                <input id="date_input" type="date" name="publishingDate" required >
             </div>
 
-
+            <p id="date_error" class="error"></p>
 
             <div class="two-inputs">
-
-                <select class="input-class" name="genreBook" required>
-
-                    <option value hidden selected disabled>--Select Genre--</option>
+<!-- name =  department-->
+                <select name="genre" required>
+                    <option value hidden selected disabled>
+                        --Select Genre--
+                    </option>
+                                    
                     <option value="Crime">Crime</option>
                     <option value="Detective fiction">Detective fiction</option>
                     <option value="Science fiction">Science fiction</option>
@@ -102,101 +103,78 @@
                     <option value="Romance novel">Romance novel</option>
 
                 </select>
-
-
-                <input class="input-class" type="number" name="numberOfThePages" placeholder="Number of the pages"
-                    onchange="onChange(event)" required>
+<!-- name = pages  // id = pages-input -->
+                <input type="number" name="numberPages" placeholder="Enter number of the pages" id="pages_input" required>
             </div>
-
-            <div class="error-massage-class"></div>
+<!-- id = salary_error -->
+            <p id="pages_error" class="error"></p>
 
             <div class="buttons">
-                <button class="input-class" type="submit">Submit</button>
-                <button class="input-class" type="reset">Reset</button>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
             </div>
 
-
-
         </form>
+
     </section>
-    <!-- *****************************  SECTION 1 ************************************************************* -->
+    <!-- **********************************  Section 1 **************************************** -->
     <section id="show-all-books" hidden>
-        <label class="header-form-class">All books in the library</label>
-        <ul class="books-list-class" id="books-all-id">
+        <header class="form-title">
+            All books in the Library
+        </header>
 
+        <ul class="books-list" id="books-all">
         </ul>
+
     </section>
-    <!-- ******************************************  SECTION 2 ********************************************* -->
+    <!-- ************************************ Section 2 ******************************************* -->
+    <section id="show-by-author" hidden>
+        <header class="form-title">
+            Book search by author
+        </header>
 
-    <section id="search-by-author-id" class="addBook-class" hidden>
-        <header class="header-form-class-search">Book search by Author</header>
+        <form id="by-author-form" class="form-class">
 
-
-
-        <form class="author_form-class" onsubmit="onSubmitSearch(event)">
-
-            <div class="two-inputs-search">
-                <input type="text" class="input-class" name="authorName" placeholder="Enter Author name" required>
+            <div class="two-inputs">
+                <input type="text" name="byAuthor" placeholder="Enter Author name">
             </div>
 
-            <label class="no-book-by-author-class"></label>
-
-
-
-
-            <div class="buttons-search">
-                <button type="submit" class="input-class">Search</button>
-                
+            <div class="buttons">
+                <button type="submit">Search</button>
             </div>
 
         </form>
-        <div>
-            <ul class="books-list-class" id="books-by-author-id">
 
-            </ul>
-
-        </div>
-         </section>
-
-    <!-- ******************   SECTION 3 *************************** -->
- 
-
-                  <ul class="books-list-class" id="books-by-author-id">
-
-            </ul>
-        </div>
     </section>
+    <!-- *************************************Section 3 ********************************************** -->
+    <section id="show-books-pages" hidden>
+        <header class="form-title">
+            Search book by number of pages
+        </header>
 
-    <section id="search-by-pages-id" class="addBook-class" hidden>
-        <header class="header-form-class-search">Search books by number of pages</header>
+        <form id="pages-form" class="form-class" onsubmit="onSubmitSalary(event)">
 
-        <form class="author_form-class" onsubmit="onSubmitPages(event)">
-
-            <div class="two-inputs-search">
-                <input type="text" class="input-class" name="from" placeholder="From" onchange="onChangeFrom(event)" required>
-                <input type="text" class="input-class" name="to" placeholder="To" onchange="onChangeTo(event)" required>
+            <div class="two-inputs">
+                <input type="number" name="pageFrom" placeholder="Enter pages 'From'"
+                    onchange="onChangeSalaryFrom(event)" required>
+                <input type="number" name="pageTo" placeholder="Enter pages 'To'" onchange="onChangeSalaryTo(event)"
+                    required>
             </div>
 
-            <label class="no-book-by-pages-class"></label>
-
-            <div class="buttons-search">
-                <button type="submit" class="input-class">Search</button>
-                <button type="reset" class="input-class">Reset</button>
+            <div class="buttons">
+                <button type="submit">Search</button>
+                <button type="reset">Reset</button>
             </div>
 
         </form>
-        <div>
-            <ul class="books-list-class" id="books-by-pages-id">
 
-            </ul>
+        <p id="salary_form_error" class="error center"></p>
 
-        </div>
-        
+        <ul class="books-list" id="books-pages">
+        </ul>
+
     </section>
-
-
-
-    <!-- ************************************************************* -->
+    <!-- ************************************************************************************************ -->
 
     <script src="src/main.js" type="module"></script>
 </body>

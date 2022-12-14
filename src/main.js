@@ -1,201 +1,94 @@
 import { Library } from "./data/library.js";
-import { showErrorMessage } from "./ui/ErrorMessage.js";
+import { EmployeeForm } from "./ui/employeeForm.js";
+import { showErrorMessage } from "./ui/errorMessage.js";
 
-//*****************   CONST  ********* */
-const ACTIVE = "active";
-const MIN_DATE = new Date('1980-01-01');
-const MAX_DATE = new Date();
-const MIN_PAGES = 50;
-const MAX_PAGES = 2000;
-const ERROR_CLASS = "error-class";
-const TIME_DELAY = 5000;
+const MIN_SALARY = 1000;
+const MAX_SALARY = 40000;
+const MIN_YEAR = 1950;
 
 
-/************  Button 0 ***************************************** */
-//const buttonsMenuElement = document.querySelectorAll(".main-button-class");
+const ACTIVE = "active"
+
+
+
+
+const salaryFormErrorElement = document.getElementById("salary_form_error");
+const employeesListElement = document.getElementById("books-all");
+const employeesSalaryListElement = document.getElementById("books-pages");
 const sectionsElement = document.querySelectorAll("section");
-const inputElements = document.querySelectorAll(".library-form-class [name]");
-// const errorElement = document.getElementById("date-error-id");
-const messageError = document.querySelector(".error-massage-class");
+const buttonsMenuElement = document.querySelectorAll(".buttons-menu *");
+/************************************************************************** */
+//functions of Company
+
+
 const library = new Library();
-//************************************************************************** */
+//functions of Employee Form
 
 
 
-//**************** button 1 (all Books) **************************************/
 
-const booksListElement = document.getElementById("books-all-id");
+const employeeForm = new EmployeeForm({idForm: "book_form", idDateInput: "date_input",
+idPagesInput: "pages_input", idDateError: "date_error", idSalaryError: "pages_error",
+ minYear: MIN_YEAR, minSalary: MIN_SALARY, maxSalary: MAX_SALARY})
+ employeeForm.addSubmitHandler((employee) => library.hireEmployee(employee))
+/************************************************************* */
 
-//********************************************************************* */
-// ***************button 2 (Search by author) *****************************
+/********************************************************************************** */
 
-const elementsByAuthor = document.getElementById("books-by-author-id");
-const inputAutor = document.querySelectorAll(".author_form-class [name]");
+//functions of Salary Form
 
- const noBook = document.querySelector(".no-book-by-author-class");
-
-//*********************************************************************** */
-// **************  button 3 (books by Pages) ***************************
-
-const inputPages = document.getElementById("search-by-pages-id");
-const noPages = document.querySelector(".no-book-by-pages-class");
-const elementsByPages = document.getElementById("books-by-pages-id");
-
-// ********************************************************************
+let pageFrom = 0;
+let pageTo = 0;
+function onSubmitSalary(event) {
+    event.preventDefault();
+    const books = library.getEmployeesBySalary(pageFrom, pageTo);
+    employeesSalaryListElement.innerHTML = getEmployeeItems(books);
 
 
-// *************   Page ADD books  **************************
-
+   
+}
+function onChangeSalaryFrom(event) {
+    const value = +event.target.value;
+    if (pageTo && value >= pageTo) {
+        showErrorMessage(event.target, "Salary 'from' must be less than Salary 'to'",
+        salaryFormErrorElement);
+    } else {
+        salaryFrom = value;
+    }
+}
+function onChangeSalaryTo(event) {
+    const value = +event.target.value;
+    if (salaryFrom && value < salaryFrom) {
+        showErrorMessage(event.target, "Salary 'To' must be greater than Salary 'From'",
+        salaryFormErrorElement);
+    }
+    pageTo = value;
+}
 function showSection(index) {
-    // buttonsMenuElement.forEach(e => e.classList.remove(ACTIVE));
+    buttonsMenuElement.forEach(e => e.classList.remove(ACTIVE));
     sectionsElement.forEach(e => e.hidden = true)
-    // buttonsMenuElement[index].classList.add(ACTIVE);
+    buttonsMenuElement[index].classList.add(ACTIVE);
     sectionsElement[index].hidden = false;
     if (index == 1) {
-        const books = library.getAllBooks();
-        booksListElement.innerHTML = getBookItems(books);
+        const books = library.getAllEmployees();
+        employeesListElement.innerHTML = getEmployeeItems(books);
     }
 }
-
-function onSubmit(event) {
-    event.preventDefault();
-    const book = Array.from(inputElements).reduce(
-        (res, cur) => {
-            res[cur.name] = cur.value;
-            return res;
-        }, {})
-    console.log(book);
-    library.addBook(book);
-}
-function onChange(event) {
-    if (event.target.name == 'publishDate') {
-        validatePublishDate(event.target);
-    } else if (event.target.name == 'numberOfThePages') {
-        validateNumberPages(event.target);
-    }
-    // } else if (event.target.name == 'from') {
-    //     validateFromPage(event.target);
-    // } else if (event.target.name == 'to') {
-    //     validateToPage(event.target);
-    // }
-}
-function validatePublishDate(element) {
-    const valueDateInput = new Date(element.value);
-    if (valueDateInput < MIN_DATE || valueDateInput > MAX_DATE) {
-
-        const message = valueDateInput < MIN_DATE ? `Date must be ${MIN_DATE} or greater`
-            : `Date must be  ${MAX_DATE} or less`;
-        showErrorMessage(element, message, errorElement);
-    }
-}
-function validateNumberPages(element) {
-    const numPage = element.value;
-
-    if (numPage < MIN_PAGES || numPage > MAX_PAGES) {
-        const message = numPage < MIN_PAGES ? `Pages must be ${MIN_PAGES} or greater` : `Pages must be ${MAX_PAGES} or less`;
-        showErrorMessage(element, message);
-    }
-}
-
-// function showErrorMessage(element, message) {
-
-//     messageError.innerHTML = message;
-
-//     // element.classList.add(ERROR_CLASS);
-//     setTimeout(function () {
-
-//         // element.classList.remove(ERROR_CLASS);
-//         //  dateErrorElement.innerHTML = '';
-//         messageError.innerHTML = '';
-//         element.value = ''
-//     }, TIME_DELAY);
-
-
-// }
-/************************  Page All Books  ************************************* */
-
-function getBookItems(books) {
-    return books.map(b =>
-        `<li class="books-item-list-main">
-              <div class="book-item-container">
-                 <p class="book-item-paragraph">Title: ${b.titleBook}</p>
-                 <p class="book-item-paragraph">Author: ${b.authorBook}</p>
-                 <p class="book-item-paragraph">Bublication: ${b.publishDate}</p>
-                 <p class="book-item-paragraph">Genre: ${b.genreBook}</p>
-                 <p class="book-item-paragraph">Pages: ${b.numberOfThePages}</p>
+function getEmployeeItems(books) {
+    return books.map (e => 
+        `<li class="books-item">
+              <div class="books-item-container">
+                 <p class="books-item-paragraph">Name: ${e.employee_name} </p>
+                 <p class="books-item-paragraph">Email: ${e.email} </p>
+                 <p class="books-item-paragraph">Department: ${e.department}</p>
+                 <p class="books-item-paragraph">Bithdate: ${e.birthDate}</p>
+                 <p class="books-item-paragraph">Salary: ${e.pages}</p>
               </div>
           </li>`).join('');
 }
-// **********************  Page Search Books ***********************************
-
-function onSubmitSearch(event) {
-    event.preventDefault();
-    // const author = Array.from(inputAutor)[0].value;
-    const author = inputAutor[0].value;
-     const authorBook = library.getAuthorBooks(author);
-    validateBookBySearch(authorBook);
- 
-}
-
-function validateBookBySearch(authorBook) {
- if (authorBook.length == 0)
-     {elementsByAuthor.innerHTML = ''
-               noBook.innerHTML = 'No books found by this author';
-                        setTimeout(function() { noBook.innerHTML = ''},TIME_DELAY);
-     } else
-    {elementsByAuthor.innerHTML = getBookItems(authorBook);}
-}
-
-
-// ********************************   Page Search by Numper Pages *********************
-let pagesFrom = 0;
-let pagesTo = 0;
-
-function onSubmitPages(event) {
-event.preventDefault();
-const pages = library.getBooksByPages(pagesFrom, pagesTo);
-console.log("AAA",pages)
-
- elementsByPages.innerHTML = getBookItems(pages);
-
-}
-
-
-function onChangeFrom(event) {
-    const value = +event.target.value;
-    if (pagesTo && value >= pagesTo) {
-        // showErrorMessage(event.target, "Salary 'from' must be less than Salary 'to'"/*,
-        // salaryFormErrorElement*/);
-        // validateBookBySearch1()
-    } else {
-        pagesFrom = value;
-    }
-}
-function onChangeTo(event) {
-    const value = +event.target.value;
-    if (pagesFrom && value < pagesFrom) {
-        showErrorMessage(event.target, "Salary 'To' must be greater than Salary 'From'"/*,
-        salaryFormErrorElement*/);
-    }
-    pagesTo = value;
-}
-
-// function validateBookBySearch1(authorBook) {
-//     if (authorBook.length == 0)
-//         {elementsByAuthor.innerHTML = ''
-//                   noBook.innerHTML = 'No books found by this author';
-//                            setTimeout(function() { noBook.innerHTML = ''},TIME_DELAY);
-//         } else
-//        {elementsByAuthor.innerHTML = getBookItems(authorBook);}
-//    }
-
-// ****************************************************************************************
 
 
 window.showSection = showSection;
-window.onSubmit = onSubmit;
-window.onChange = onChange;
-window.onSubmitSearch = onSubmitSearch;
-window.onSubmitPages = onSubmitPages;
-window.onChangeTo = onChangeTo;
-window.onChangeFrom = onChangeFrom;
+window.onChangeSalaryTo = onChangeSalaryTo;
+window.onChangeSalaryFrom = onChangeSalaryFrom
+window.onSubmitSalary = onSubmitSalary

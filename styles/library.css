@@ -1,133 +1,91 @@
- /* .active {
-    background-color: blue;
-    color: white;
-}  */
- .header-button-class {
-     display: block;
-     text-align: center;
-     font-size: xx-large;
-     margin-bottom: 3vh;
-     margin-top: 1vh;
- }
-
- .main-button-class {
-     display: flex;
-     justify-content: center;
-     margin-bottom: 5vh;
- }
-
- /* ********** section 0 -- date class  -- Add Book*** */
- .date-label-class {
-     display: flex;
-     flex-direction: column;
-     text-align: center;
-     color: blue;
-     font-size: large;
- }
- 
- .header-form-class {
-    display: block;
-    text-align: center;
-    font-size: xx-large;
-    margin-bottom: 2vh;
+body, html {
+    height: 100%;
 }
-
-
- /* ************************************ */
- /* ***********Section 1 - All Books ************* */
-
- .books-item-list-main {
-     max-width: 30vw;
-     background-color: bisque;
-     /* border-radius: 25%; */
-     text-align: center;
-     border: 2px solid green;
-     margin-top: 5vh;
-     /* overflow: hidden; */
- }
-
- .book-item-container {
-     /* display: flex; */
-     /* flex-direction: column; */
-     /* justify-content: space-evenly;  */
- }
-
- .book-item-paragraph {
-     /* display: flex; */
-     background-color: white;
-     font-weight: bold;
- }
-
- .books-list-class {
-     list-style: none;
-     display: flex;
-     /* flex-direction: row; */
-     flex-wrap: wrap;
-     max-height: 60vh;
-     overflow-y: scroll;
-     justify-content: space-around;
- }
-
- /* ********************************************** */
- /*************  Section 2  Search by author  **************/
- .no-book-by-author-class {
-     display: block;
-     text-align: center;
-     color: red;
-     margin-top: 5vh;
-     margin-bottom: 5vh;
-     font-size: large;
- }
- .buttons-search {
-    display: flex;
-    justify-content: center;
- }
- .two-inputs-search {
-    display: flex;
-    justify-content: center;
- }
- 
- .header-form-class-search{
-    display: block;
-    text-align: center;
-    font-size: xx-large;
-    margin-bottom: 1vh;
+body {
+    background-color: aliceblue;
 }
-
-/* **************************************************************** */
-
- .button-class+.button-class {
-     margin-left: 3vw;
- }
-
- .addBook-class {}
-
- .library-form-class {}
-
- .two-inputs {
-     display: flex;
-     justify-content: center;
-     margin-top: 5vh;
- }
-
- .input-class+.input-class {
-     margin-left: 10vw;
- }
-
- /* .error-class {
+.form-title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.form-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+.two-inputs {
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+    margin-top: 5vh;
     
+}
+
+/* *****************   buttons ************************** */
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10vh;
+    width: 40vw;
+    
+}
+.buttons-menu {
+    display: flex;
+    justify-content: center;
+}
+.btn-menu+.btn-menu {
+    margin-left: 10vw;
+}
+/* ********************************** */
+/* ********************   Section 0 ******************************* */
+.date-label {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column; 
+    height: 10vh;
+    justify-content: space-around;
+}
+/* ************************************************************** */
+.error {
     border-color: red;
     color: red;
-} */
- .error-massage-class {
-     display: block;
-     text-align: center;
-     color: red;
-     margin-top: 5vh;
- }
+}
 
- .buttons {
-     display: flex;
-     justify-content: center;
-     margin-top: 20vh;
- }
+.active {
+    background-color: blue;
+    color: white;
+}
+.books-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 70vh;
+    list-style: none;
+    overflow-y: scroll;
+    justify-content: space-around;
+}
+.books-item {
+    max-width: 30vw;
+    background-color: blue;
+    border-radius: 25%;
+    text-align: center;
+    border: 2px solid blue;
+    margin-top: 10vh;
+    overflow: hidden;
+}
+.books-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.books-item-paragraph {
+    background-color: white;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
