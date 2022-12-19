@@ -51,6 +51,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/library_icon.png">
+    <link rel="stylesheet" href="/styles/library.css">
+    <title>Book Library</title>
+</head>
+
+<body>
+    <div class="main-buttons-class">
+        <button class="button-main-menu-class">Adding new book</button>
+        <button class="button-main-menu-class">Presenting all the books</button>
+        <button class="button-main-menu-class">search for books by author</button>
+        <button class="button-main-menu-class">search for books by number of pages</button>
+    </div>
+
+    <!-- *****************************  Section 0  // Add Boks Form ************************* -->
+    <section id="add-book-id" hidden>
+        <header class="header-class">
+            Add books to the library
+        </header>
+        <form id="add-books-form-id">
+
+            <div class="two-sections-class">
+                <input name="book_title" type="text" placeholder="Enter Book Title" required>
+                <input name="book_author" type="text" placeholder="Enter Author" required>
+            </div>
+
+            <div class="two-sections-class">
+                <p>Enter publishing date</p>
+            </div>
+            <div class="two-sections-class">
+                <input id="date-input-id" name="book_date" type="date" required>
+            </div>
+
+            <div class="two-sections-class">
+                <select name="book_genre">
+                    <option value hidden selected disabled>
+                        -- Select Genre --
+                    </option>
+                    <option value="Crime">Crime</option>
+                    <option value="Detective fiction">Detective fiction</option>
+                    <option value="Science fiction">Science fiction</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Romance novel">Romance novel</option>
+                </select>
+
+                <input id="book-pages-id" name="book_pages" type="number" placeholder="Enter number of the pages"
+                    required>
+            </div>
+            <div class="button-submit-class">
+                <button class="btn-sbm-class" type="submit">Submit</button>
+                <button class="btn-sbm-class" type="reset">Reset</button>
+
+            </div>
+        </form>
+    </section>
+
+    <!-- ******************************* Section 1  // Present All Books *********************** -->
+    <section id="show-all-books-id" hidden>
+        <span>bbb</span>
+    </section>
+
+    <!-- ****************************  Section 2   //  Search by Author ******************* -->
+    <section id="search-by-author-id" hidden>
+        <span>ccc</span>
+    </section>
+
+    <!-- *********************************  Section 3 //  Search by pages ********************** -->
+    <section id="search-by-pages-id" hidden>
+        <span>dddd</span>
+    </section>
+    <!-- ******************************************************************************** -->
+
+
+    <script src="src/main.js" type="module"></script>
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
 
     <link rel="stylesheet" href="styles/library.css">
@@ -65,118 +151,118 @@
         <button onclick="showSection(3)" class="btn-menu">Presenting the books having the number of the pages in a given
             range</button>
     </div>
-    <!-- ****************   Section 0 ******************************************* -->
-    <section id="add-book"  hidden>  
-<!-- add-employee -->
-        <header class="form-title">
-            Libray Form
-        </header>
+    ****************   Section 0 ******************************************* -->
+<!-- <section id="add-book" hidden>
+     add-employee 
+    <header class="form-title">
+        Libray Form
+    </header>
 
-        <form id="book_form" class="form-class">
-<!-- employee-form -->
-            <div class="two-inputs">
-                <!-- employee_name -->
-                <input type="text" name="book_title" required placeholder="Enter book title">
-                <!-- email -->
-                <input type="text" name="Author" placeholder="Enter Author" required>
-            </div>
+    <form id="book_form" class="form-class">
+        employee-form 
+        <div class="two-inputs">
+             employee_name
+            <input type="text" name="book_title" required placeholder="Enter book title">
+             email 
+            <input type="text" name="Author" placeholder="Enter Author" required>
+        </div>
 
-            <div class="date-label">
-                <label>Enter publishing date</label>
-                <!--     // name = birthDate  -->
-                <input id="date_input" type="date" name="publishingDate" required >
-            </div>
+        <div class="date-label">
+            <label>Enter publishing date</label>
+               // name = birthDate  
+            <input id="date_input" type="date" name="publishingDate" required>
+        </div>
 
-            <p id="date_error" class="error"></p>
+        <p id="date_error" class="error"></p>
 
-            <div class="two-inputs">
-<!-- name =  department-->
-                <select name="genre" required>
-                    <option value hidden selected disabled>
-                        --Select Genre--
-                    </option>
-                                    
-                    <option value="Crime">Crime</option>
-                    <option value="Detective fiction">Detective fiction</option>
-                    <option value="Science fiction">Science fiction</option>
-                    <option value="Fantasy">Fantasy</option>
-                    <option value="Romance novel">Romance novel</option>
+        <div class="two-inputs">
+            name =  department
+            <select name="genre" required>
+                <option value hidden selected disabled>
+                    --Select Genre--
+                </option>
 
-                </select>
-<!-- name = pages  // id = pages-input -->
-                <input type="number" name="numberPages" placeholder="Enter number of the pages" id="pages_input" required>
-            </div>
-<!-- id = salary_error -->
-            <p id="pages_error" class="error"></p>
+                <option value="Crime">Crime</option>
+                <option value="Detective fiction">Detective fiction</option>
+                <option value="Science fiction">Science fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Romance novel">Romance novel</option>
 
-            <div class="buttons">
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
-            </div>
+            </select>
+             name = pages  // id = pages-input
+            <input type="number" name="numberPages" placeholder="Enter number of the pages" id="pages_input" required>
+        </div>
+         id = salary_error 
+        <p id="pages_error" class="error"></p>
 
-        </form>
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
 
-    </section>
-    <!-- **********************************  Section 1 **************************************** -->
-    <section id="show-all-books" hidden>
-        <header class="form-title">
-            All books in the Library
-        </header>
+    </form>
 
-        <ul class="books-list" id="books-all">
-        </ul>
+</section>
+ **********************************  Section 1 **************************************** 
+<section id="show-all-books" hidden>
+    <header class="form-title">
+        All books in the Library
+    </header>
 
-    </section>
-    <!-- ************************************ Section 2 ******************************************* -->
-    <section id="show-by-author" hidden>
-        <header class="form-title">
-            Book search by author
-        </header>
+    <ul class="books-list" id="books-all">
+    </ul>
 
-        <form id="by-author-form" class="form-class">
+</section>
+ ************************************ Section 2 ******************************************* 
+<section id="show-by-author" hidden>
+    <header class="form-title">
+        Book search by author
+    </header>
 
-            <div class="two-inputs">
-                <input type="text" name="byAuthor" placeholder="Enter Author name">
-            </div>
+    <form id="by-author-form" class="form-class">
 
-            <div class="buttons">
-                <button type="submit">Search</button>
-            </div>
+        <div class="two-inputs">
+            <input type="text" name="byAuthor" placeholder="Enter Author name">
+        </div>
 
-        </form>
+        <div class="buttons">
+            <button type="submit">Search</button>
+        </div>
 
-    </section>
-    <!-- *************************************Section 3 ********************************************** -->
-    <section id="show-books-pages" hidden>
-        <header class="form-title">
-            Search book by number of pages
-        </header>
+    </form>
 
-        <form id="pages-form" class="form-class" onsubmit="onSubmitSalary(event)">
+</section>
+*************************************Section 3 ********************************************** 
+<section id="show-books-pages" hidden>
+    <header class="form-title">
+        Search book by number of pages
+    </header>
 
-            <div class="two-inputs">
-                <input type="number" name="pageFrom" placeholder="Enter pages 'From'"
-                    onchange="onChangeSalaryFrom(event)" required>
-                <input type="number" name="pageTo" placeholder="Enter pages 'To'" onchange="onChangeSalaryTo(event)"
-                    required>
-            </div>
+    <form id="pages-form" class="form-class" onsubmit="onSubmitSalary(event)">
 
-            <div class="buttons">
-                <button type="submit">Search</button>
-                <button type="reset">Reset</button>
-            </div>
+        <div class="two-inputs">
+            <input type="number" name="pageFrom" placeholder="Enter pages 'From'" onchange="onChangeSalaryFrom(event)"
+                required>
+            <input type="number" name="pageTo" placeholder="Enter pages 'To'" onchange="onChangeSalaryTo(event)"
+                required>
+        </div>
 
-        </form>
+        <div class="buttons">
+            <button type="submit">Search</button>
+            <button type="reset">Reset</button>
+        </div>
 
-        <p id="salary_form_error" class="error center"></p>
+    </form>
 
-        <ul class="books-list" id="books-pages">
-        </ul>
+    <p id="salary_form_error" class="error center"></p>
 
-    </section>
-    <!-- ************************************************************************************************ -->
+    <ul class="books-list" id="books-pages">
+    </ul>
 
-    <script src="src/main.js" type="module"></script>
+</section>
+ ************************************************************************************************ 
+
+<script src="src/main.js" type="module"></script>
 </body>
 
-</html>
+</html> -->

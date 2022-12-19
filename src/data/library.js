@@ -2,14 +2,28 @@ export class Library {
     constructor() {
         this.books = [];
     }
-    hireEmployee(employee) {
-        employee.pages = +employee.pages;
-        this.books.push(employee);
+  
+    addBook(book) {     
+        this.books.push(book);  
     }
-    getAllEmployees() {
-        return this.books;
-    }
-    getEmployeesBySalary(salaryFrom, pageTo) {
-        return this.books.filter(e => e.pages >= salaryFrom && e.pages < pageTo);
-    }
+    getAllBooks() {}
+    getAuthorBooks(author) {}
+    getBooksByPages(pagesFrom, pagesTo) {}
+
 }
+
+// export class Company {
+//     constructor() {
+//         this.employees = [];
+//     }
+//     hireEmployee(employee) {
+//         employee.salary = +employee.salary;
+//         this.employees.push(employee);
+//     }
+//     getAllEmployees() {
+//         return this.employees;
+//     }
+//     getEmployeesBySalary(salaryFrom, salaryTo) {
+//         return this.employees.filter(e => e.salary >= salaryFrom && e.salary < salaryTo);
+//     }
+// }
